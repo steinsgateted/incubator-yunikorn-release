@@ -27,14 +27,14 @@ hostNetwork: false
 placeHolderImage: k8s.gcr.io/pause
 
 image:
-  repository: apache/yunikorn
-  tag: scheduler-latest
-  pullPolicy: Always
+  repository: lf2netted/yunikorn
+  tag: scheduler-amd64-latest
+  pullPolicy: Never
 
 pluginImage:
-  repository: apache/yunikorn
-  tag: scheduler-plugin-latest
-  pullPolicy: Always
+  repository: lf2netted/yunikorn
+  tag: scheduler-plugin-amd64-latest
+  pullPolicy: Never
 
 nodeSelector: {}
 tolerations: []
@@ -42,9 +42,9 @@ affinity: {}
 
 admissionController:
   image:
-    repository: apache/yunikorn
-    tag: admission-latest
-    pullPolicy: Always
+    repository: lf2netted/yunikorn
+    tag: admission-amd64-latest
+    pullPolicy: Never
   replicaCount: 1
   serviceAccount: yunikorn-admission-controller
   processNamespaces: ""
@@ -67,9 +67,9 @@ admissionController:
 
 web:
   image:
-    repository: apache/yunikorn
-    tag: web-latest
-    pullPolicy: Always
+    repository: lf2netted/yunikorn
+    tag: web-amd64-latest
+    pullPolicy: Never
   resources:
     requests:
       memory: "100Mi"
@@ -99,7 +99,7 @@ embedAdmissionController: true
 
 # When this flag is true, the scheduler will be deployed as Kubernetes scheduler plugin.
 # When this flag is false, the scheduler will be deployed as a standalone scheduler.
-enableSchedulerPlugin: false
+enableSchedulerPlugin: true
 
 #
 # ------------------------------------------------------------------------
