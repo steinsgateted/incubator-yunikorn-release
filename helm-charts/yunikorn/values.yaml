@@ -29,12 +29,12 @@ placeHolderImage: k8s.gcr.io/pause
 image:
   repository: lf2netted/yunikorn
   tag: scheduler-amd64-latest
-  pullPolicy: Never
+  pullPolicy: Always
 
 pluginImage:
   repository: lf2netted/yunikorn
   tag: scheduler-plugin-amd64-latest
-  pullPolicy: Never
+  pullPolicy: Always
 
 nodeSelector: {}
 tolerations: []
@@ -44,7 +44,7 @@ admissionController:
   image:
     repository: lf2netted/yunikorn
     tag: admission-amd64-latest
-    pullPolicy: Never
+    pullPolicy: Always
   replicaCount: 1
   serviceAccount: yunikorn-admission-controller
   processNamespaces: ""
@@ -69,7 +69,7 @@ web:
   image:
     repository: lf2netted/yunikorn
     tag: web-amd64-latest
-    pullPolicy: Never
+    pullPolicy: Always
   resources:
     requests:
       memory: "100Mi"
