@@ -63,7 +63,7 @@ admissionController:
   tolerations: []
   affinity: {}
   service:
-    type: ClusterIP
+    type: NodePort
 
 web:
   image:

@@ -26,7 +26,6 @@ metadata:
 spec:
   type: {{ .Values.service.type }}
   ports:
-    type: NodePort
     - port: {{ .Values.service.port }}
       targetPort: {{ .Values.service.port }}
       protocol: TCP
