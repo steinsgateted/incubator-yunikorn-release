@@ -63,7 +63,7 @@ admissionController:
   tolerations: []
   affinity: {}
   service:
-    type: NodePort
+    type: ClusterIP
 
 web:
   image:
@@ -79,7 +79,7 @@ web:
       cpu: "200m"
 
 service:
-  type: ClusterIP
+  type: NodePort
   port: 9080
   portWeb: 9889
   nport: 32700
