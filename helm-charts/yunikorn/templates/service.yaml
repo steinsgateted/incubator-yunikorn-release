@@ -27,13 +27,15 @@ spec:
   type: {{ .Values.service.type }}
   ports:
     - port: {{ .Values.service.port }}
-      targetPort: http1
+      targetPort: {{ .Values.service.port }}
       protocol: TCP
       name: yunikorn-core
+      nodePort: {{ .Values.service.nport }}
     - port: {{ .Values.service.portWeb }}
-      targetPort: http2
+      targetPort: {{ .Values.service.portWeb }}
       protocol: TCP
       name: yunikorn-service
+      nodePort: {{ .Values.service.nwebport }}
   selector:
     app: yunikorn
     component: yunikorn-scheduler

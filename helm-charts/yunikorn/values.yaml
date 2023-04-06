@@ -24,13 +24,13 @@ hostNetwork: false
 
 image:
   repository: apache/yunikorn
-  tag: scheduler-latest
-  pullPolicy: Always
+  tag: scheduler-amd64-latest
+  pullPolicy: IfNotPresent
 
 pluginImage:
   repository: apache/yunikorn
-  tag: scheduler-plugin-latest
-  pullPolicy: Always
+  tag: scheduler-plugin-amd64-latest
+  pullPolicy: IfNotPresent
 
 nodeSelector: {}
 tolerations: []
@@ -43,8 +43,8 @@ placeHolderImage: null # deprecated; use service.placeholderImage in yunikornDef
 admissionController:
   image:
     repository: apache/yunikorn
-    tag: admission-latest
-    pullPolicy: Always
+    tag: admission-amd64-latest
+    pullPolicy: IfNotPresent
   replicaCount: 1
   serviceAccount: yunikorn-admission-controller
   hostNetwork: true
@@ -68,8 +68,8 @@ admissionController:
 web:
   image:
     repository: apache/yunikorn
-    tag: web-latest
-    pullPolicy: Always
+    tag: web-amd64-latest
+    pullPolicy: IfNotPresent
   resources:
     requests:
       cpu: 100m
@@ -79,9 +79,11 @@ web:
       memory: 500Mi
 
 service:
-  type: ClusterIP
+  type: NodePort
   port: 9080
   portWeb: 9889
+  nport: 32700
+  nwebport: 32701
 
 ingress:
   enabled: false
@@ -104,10 +106,10 @@ resources:
 # Bootstrap configuration for YuniKorn - will be rendered into yunikorn-defaults ConfigMap.
 # Any valid options for YuniKorn may be specified here.
 # Example:
-# yunikornDefaults:
-#   service.placeholderImage: registry.k8s.io/pause:3.7
-#
-yunikornDefaults: {}
+yunikornDefaults:
+  service.placeholderImage: registry.k8s.io/pause:3.7
+  service.operatorPlugins: "general,spark-k8s-operator"
+#yunikornDefaults: {}
 
 # When this flag is true, the admission controller will be installed along with the scheduler.
 # When this flag is false, the admission controller will not be installed.
