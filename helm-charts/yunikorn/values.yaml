@@ -18,7 +18,6 @@
 # Declare variables to be passed into your templates.
 
 imagePullSecrets: []
-replicaCount: 1
 serviceAccount: yunikorn-admin
 hostNetwork: false
 
@@ -68,6 +67,7 @@ admissionController:
   labelNamespaces: null   # deprecated; use admissionController.filtering.labelNamespaces in yunikornDefaults
   noLabelNamespaces: null # deprecated; use admissionController.filtering.noLabelNamespaces in yunikornDefaults
   podLabels: {}
+  podAnnotations: {}
 
 web:
   image:
@@ -125,3 +125,4 @@ embedAdmissionController: false
 enableSchedulerPlugin: false
 
 podLabels: {}
+podAnnotations: {}

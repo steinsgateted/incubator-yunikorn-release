@@ -43,13 +43,11 @@ YuniKorn can be deployed with [helm-charts](https://hub.helm.sh/charts/yunikorn/
 
 | K8s Version         | Support? |
 |---------------------|:--------:|
-| 1.20.x (or earlier) |    X     |
-| 1.21.x              |    √     |
-| 1.22.x              |    √     |
-| 1.23.x              |    √     |
+| 1.23.x (or earlier) |    X     |
 | 1.24.x              |    √     |
 | 1.25.x              |    √     |
 | 1.26.x              |    √     |
+| 1.27.x              |    √     |
 
 ## Installing the chart
 ```
@@ -63,7 +61,6 @@ The following table lists the configurable parameters of the YuniKorn chart and 
 | Parameter                                       | Description                                                 | Default                         |
 |-------------------------------------------------|-------------------------------------------------------------|---------------------------------|
 | `imagePullSecrets`                              | Docker repository secrets                                   | `[]`                            |
-| `replicaCount`                                  | Scheduler replicas to be deployed                           | `1`                             |
 | `serviceAccount`                                | Service account name                                        | `yunikorn-admin`                |
 | `hostNetwork`                                   | Whether scheduler should run in the host network            | `false`                         |
 | `image.repository`                              | Scheduler image repository                                  | `apache/yunikorn`               |
@@ -73,7 +70,9 @@ The following table lists the configurable parameters of the YuniKorn chart and 
 | `pluginImage.tag`                               | Scheduler plugin image tag                                  | `scheduler-plugin-latest`       |
 | `pluginImage.pullPolicy`                        | Scheduler plugin image pull policy                          | `Always`                        |
 | `podLabels`                                     | Scheduler pod labels                                        | `{}`                            |
+| `podAnnotations`                                | Scheduler pod annotations                                   | `{}`                            |
 | `admissionController.podLabels`                 | Admission controller pod labels                             | `{}`                            |
+| `admissionController.podAnnotations`            | Admission controller pod annotations                        | `{}`                            |
 | `admissionController.replicaCount`              | Admission controller replicas to be deployed                | `1`                             |
 | `admissionController.serviceAccount`            | Admission controller service account name                   | `yunikorn-admission-controller` |
 | `admissionController.image.repository`          | Admission controller image repository                       | `apache/yunikorn`               |
